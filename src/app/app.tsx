@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import {
   downloadAndZip,
   downloadAndZipWithCallback,
@@ -13,25 +12,22 @@ import { useCallback, useState } from 'react';
 import styles from './app.module.scss';
 
 const total = 10;
+const playbackWav = 'https://freewavesamples.com/files/Bass-Drum-1.wav';
+
+const guitarWav =
+  'https://freewavesamples.com/files/Alesis-Fusion-Nylon-String-Guitar-C4.wav';
+const baseWav =
+  'https://freewavesamples.com/files/Alesis-Fusion-Fretless-Bass-C3.wav';
 
 export function App() {
   // make sure you have chrome extension cors enabled for audio download to work locally
   const download1 = () => {
-    const url = new URL(
-      'https://file-examples.com/storage/feb401d325641db2fa1dfe7/2017/11/file_example_WAV_1MG.wav'
-    );
+    const url = new URL(playbackWav);
     downloadOne(url);
   };
 
   const download2 = () => {
-    const urls = [
-      new URL(
-        'https://freewavesamples.com/files/Alesis-Fusion-Fretless-Bass-C3.wav'
-      ),
-      new URL(
-        'https://file-examples.com/storage/feb401d325641db2fa1dfe7/2017/11/file_example_WAV_1MG.wav'
-      ),
-    ];
+    const urls = [new URL(baseWav), new URL(guitarWav)];
     downloadAndZip(urls);
   };
   const [counter, setCounter] = useState(0);
@@ -56,10 +52,7 @@ export function App() {
   return (
     <div>
       <div className={styles.row}>
-        <audio
-          controls
-          src="https://file-examples.com/storage/feb401d325641db2fa1dfe7/2017/11/file_example_WAV_1MG.wav"
-        >
+        <audio controls src={playbackWav}>
           Play a wav
         </audio>
       </div>
