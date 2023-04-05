@@ -5,10 +5,10 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "e2e": "nx e2e e2e",
+    "e2e": "nx e2e e2e --browser chrome",
     "format": "nx format:write",
     "test": "nx test",
-    "all": "npm run format && npm run build && npm run test"
+    "all": "yarn format && yarn build && yarn test && yarn e2e"
   },
   "engines": {
     "node": "18"
