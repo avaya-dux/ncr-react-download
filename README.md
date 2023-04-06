@@ -36,7 +36,8 @@
 
 ### 4/6/2023
 
-- replaced fetch with axios
-- axios gets are cached correctly
-- chrome cors extension must be on for all downloads including images
-- to test for failure cases, toggle the extension off
+- Replaced fetch with axios
+- Axios gets are cached correctly by axios-request-intercepter
+- Chrome cors extension must be on for ALL downloads including images; 
+- Previously, fetching image must have the extension off. Now it is on for all.
+- To test for failure cases, toggle the extension off
