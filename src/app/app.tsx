@@ -114,9 +114,8 @@ export function App() {
     setErrors([]);
     setCounter(0);
     const urls = [];
-    const url = new URL('https://picsum.photos/100/150');
     for (let i = 0; i < total; i++) {
-      urls.push(url);
+      urls.push(new URL(`https://picsum.photos/100/${i + 150}`));
     }
     const onError = (error: string) => {
       setErrors((errors: string[]) => [error, ...errors]);
@@ -151,8 +150,8 @@ export function App() {
       </div>
 
       <div className={styles.row}>
-        <p className={styles.cors_off}>
-          Toggle off Chrome CORS extension before running this
+        <p className={styles.cors_on}>
+          Toggle on Chrome CORS extension before running this
         </p>
         <Button name="downloadMany" onClick={downloadMany}>
           Download many images into a Zip file

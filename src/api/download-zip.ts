@@ -1,18 +1,14 @@
 import * as BlueBirdPromise from 'bluebird';
 import JsZip from 'jszip';
 import FileSaver from 'file-saver';
+import { axios } from '../cached-axios';
 
-function handleErrors(response: Response) {
-  if (!response.ok) {
-    console.error('return a reject');
-    return BlueBirdPromise.reject(Error(response.statusText));
-  }
-  return response;
-}
 const download = (url: URL) => {
-  return fetch(url)
-    .then((resp) => handleErrors(resp))
-    .then((resp) => resp.blob());
+  return axios
+    .get(url.href, {
+      responseType: 'blob',
+    })
+    .then((resp) => resp.data);
 };
 
 const downloadByGroup = (

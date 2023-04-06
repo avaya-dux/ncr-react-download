@@ -22,12 +22,21 @@
 - [jszip](https://www.npmjs.com/package/jszip)
 - [FileSaver](https://github.com/eligrey/FileSaver.js)
 
-## Links to free image generator sites:
+## Links to free image generator sites (downloadable via chrome cors extension):
 
 - https://picsum.photos
 - https://via.placeholder.com/600/771796
 
-## Links to free wav sample sites (downloadable via chrome cors extension)
+## Links to free wav sample sites (downloadable via chrome cors extension):
 
 - https://freewavesamples.com/
 - https://file-examples.com/index.php/sample-audio-files/sample-wav-download/
+
+## Change log
+
+### 4/6/2023
+
+- replaced fetch with axios
+- axios gets are cached correctly
+- chrome cors extension must be on for all downloads including images
+- to test for failure cases, toggle the extension off
