@@ -53,7 +53,7 @@ export function App() {
       console.log({ error: error.toString() });
       popupRef = notify({ node: notification, position: 'bottom' });
     },
-    [notify]
+    [notify, remove]
   );
 
   useEffect(() => {
@@ -71,7 +71,7 @@ export function App() {
       return;
     }
 
-    const messages = ['download failed', ...errors];
+    const messages = ['download failed:', ...errors.sort()];
     const message = messages.join(', ');
 
     const notification = (
