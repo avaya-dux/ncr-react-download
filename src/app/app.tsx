@@ -29,7 +29,7 @@ export function App() {
 
   const [errors, setErrors] = useState<string[]>([]);
 
-  const showSingleDownloadError = useCallback(
+  const showSimpleError = useCallback(
     (error: Error) => {
       let popupRef: { id: PopupId; position: PopupPosition } | undefined =
         undefined;
@@ -91,15 +91,14 @@ export function App() {
     };
   }, [errors, notify, remove]);
 
-  // make sure you have chrome extension cors enabled for audio download to work locally
   const download1 = () => {
     const url = new URL(playbackWav);
-    downloadOne(url).catch((error) => showSingleDownloadError(error));
+    downloadOne(url).catch((error) => showSimpleError(error));
   };
 
   const download2 = () => {
     const urls = [new URL(baseWav), new URL(guitarWav)];
-    downloadAndZip(urls).catch((error) => showSingleDownloadError(error));
+    downloadAndZip(urls).catch((error) => showSimpleError(error));
   };
   const [counter, setCounter] = useState(0);
 
