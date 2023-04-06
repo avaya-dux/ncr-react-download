@@ -33,7 +33,7 @@
 - https://file-examples.com/index.php/sample-audio-files/sample-wav-download/
 
 ## Chrome cors extension setting:
-- ![Chrome cors extension options](cors.extension.options.jpg)
+![Chrome cors extension options](cors.extension.options.jpg)
 
 ## Change log
 
