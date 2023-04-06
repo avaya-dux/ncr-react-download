@@ -2,22 +2,42 @@ import * as BlueBirdPromise from 'bluebird';
 import JsZip from 'jszip';
 import FileSaver from 'file-saver';
 
+function handleErrors(response: Response) {
+  if (!response.ok) {
+    console.error('return a reject');
+    return BlueBirdPromise.reject(Error(response.statusText));
+  }
+  return response;
+}
 const download = (url: URL) => {
-  return fetch(url).then((resp) => resp.blob());
+  return fetch(url)
+    .then((resp) => handleErrors(resp))
+    .then((resp) => resp.blob());
 };
 
 const downloadByGroup = (
   urls: URL[],
   files_per_group = 5,
-  cb?: (status: string) => void
+  onSuccess?: (status: string) => void,
+  onError?: (error: string) => void
 ) => {
   return BlueBirdPromise.map(
     urls,
     async (url, index, arrayLength) => {
-      if (cb) {
-        cb(`downloading ${url}, ${index} in ${arrayLength}`);
+      if (onSuccess) {
+        onSuccess(`downloading ${url}, ${index} in ${arrayLength}`);
       }
-      return await download(url);
+      return await download(url)
+        .then((resp) => {
+          return resp;
+        })
+        .catch((error) => {
+          if (onError) {
+            onError(getFilename(url, index));
+            console.error(`failed ${url}, ${index} in ${arrayLength}`);
+          }
+          return BlueBirdPromise.reject(error);
+        });
     },
     { concurrency: files_per_group }
   );
@@ -57,7 +77,10 @@ export const downloadAndZip = (urls: URL[]) => {
 
 export const downloadAndZipWithCallback = (
   urls: URL[],
-  cb: (status: string) => void
+  onSuccess: (status: string) => void,
+  onError: (message: string) => void
 ) => {
-  return downloadByGroup(urls, 5, cb).then((value) => exportZip(value, urls));
+  return downloadByGroup(urls, 5, onSuccess, onError).then((value) =>
+    exportZip(value, urls)
+  );
 };
