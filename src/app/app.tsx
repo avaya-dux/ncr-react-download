@@ -11,7 +11,7 @@ import { useCallback, useState } from 'react';
 
 import styles from './app.module.scss';
 
-const total = 10;
+const total = 100;
 const playbackWav = 'https://freewavesamples.com/files/Bass-Drum-1.wav';
 
 const guitarWav =
