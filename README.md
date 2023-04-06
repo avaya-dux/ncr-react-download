@@ -8,7 +8,7 @@
 - Node 18
 - yarn
 - Chrome
-- Chrome CORS extension
+- [Chrome CORS extension](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en)
 
 ## Development server
 
