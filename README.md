@@ -32,6 +32,9 @@
 - https://freewavesamples.com/
 - https://file-examples.com/index.php/sample-audio-files/sample-wav-download/
 
+## Chrome cors extension setting:
+- ![Chrome cors extension options](cors.extension.options.jpg)
+
 ## Change log
 
 ### 4/6/2023
@@ -41,3 +44,4 @@
 - Chrome cors extension must be on for ALL downloads including images; 
 - Previously, fetching image must have the extension off. Now it is on for all.
 - To test for failure cases, toggle the extension off
+
