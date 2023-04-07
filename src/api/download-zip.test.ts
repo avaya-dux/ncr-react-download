@@ -1,19 +1,32 @@
+import { axios } from 'src/cached-axios';
 import { downloadAndZip, downloadOne, getFilename } from './download-zip';
+import MockAdapter from 'axios-mock-adapter';
 
-describe('downloadOne', () => {
+describe('download', () => {
+  beforeEach(() => {
+    const mock = new MockAdapter(axios);
+    const str = 'hello world';
+    const mockData = new Blob([str], { type: 'plain/text' });
+    mock.onGet().reply(200, mockData);
+    global.URL.createObjectURL = vitest.fn(() => 'details');
+  });
+
+  afterEach(() => {
+    vitest.resetAllMocks();
+  });
+
   it('can download one file without exploding', () => {
     const url = new URL('https://picsum.photos/200/300');
     const file = downloadOne(url);
     expect(file).toBeTruthy();
   });
-});
 
-describe('downloadAndZip', () => {
   it('can download one file without exploding', () => {
     const urls = [new URL('https://picsum.photos/200/300')];
     const zipFile = downloadAndZip(urls);
     expect(zipFile).toBeTruthy();
   });
+
   it('can download two files without exploding', () => {
     const urls = [
       new URL('https://picsum.photos/200/300'),

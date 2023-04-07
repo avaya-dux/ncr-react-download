@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import App from './app';
 
@@ -9,7 +9,7 @@ describe('App', () => {
   });
 
   it('should have a greeting as the title', () => {
-    const { queryByText } = render(<App />);
-    expect(queryByText(/Welcome react-download/gi)).toBeFalsy();
+    render(<App />);
+    expect(screen.queryByText(/Welcome react-download/gi)).toBeFalsy();
   });
 });
