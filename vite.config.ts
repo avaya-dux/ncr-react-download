@@ -39,5 +39,9 @@ export default defineConfig({
     },
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    coverage: {
+      exclude: ["src/**/*.spec.*", "src/**/*.test.*"],
+      reporter: ["text", "json", "json-summary", "html", "lcov"],
+    },
   },
 });

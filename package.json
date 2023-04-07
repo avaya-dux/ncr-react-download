@@ -8,6 +8,7 @@
     "e2e": "nx e2e e2e --browser chrome",
     "format": "nx format:write",
     "test": "nx test",
+    "test:coverage": "nx test --coverage",
     "all": "yarn format && yarn build && yarn test && yarn e2e"
   },
   "engines": {
