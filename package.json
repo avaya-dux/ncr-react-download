@@ -12,7 +12,7 @@
     "all": "yarn format && yarn build && yarn test && yarn e2e"
   },
   "engines": {
-    "node": "18"
+    "node": ">=16.0.0"
   },
   "private": true,
   "dependencies": {

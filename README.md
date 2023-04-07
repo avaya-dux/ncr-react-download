@@ -5,7 +5,7 @@
 
 ## Requirements
 
-- Node 18
+- Node >=16.0.0
 - yarn
 - Chrome
 - [Chrome CORS extension](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en)
@@ -44,4 +44,9 @@
 - Chrome cors extension must be on for ALL downloads including images; 
 - Previously, fetching image must have the extension off. Now it is on for all.
 - To test for failure cases, toggle the extension off
+
+### 4/7/2023
+
+- mock axios in unit tests
+- set node engine version to >=16.0.0
 
