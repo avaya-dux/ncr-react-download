@@ -9,7 +9,9 @@
     "format": "nx format:write",
     "test": "nx test",
     "test:coverage": "nx test --coverage",
+    "github": "yarn && yarn build && yarn test && yarn e2e",
     "all": "yarn && yarn format && yarn build && yarn test && yarn e2e"
+
   },
   "engines": {
     "node": ">=16.0.0"

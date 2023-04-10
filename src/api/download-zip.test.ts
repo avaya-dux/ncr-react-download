@@ -2,7 +2,7 @@ import { axios } from 'src/cached-axios';
 import { downloadAndZip, downloadOne, getFilename } from './download-zip';
 import MockAdapter from 'axios-mock-adapter';
 
-describe('download', () => {
+describe('download success', () => {
   beforeEach(() => {
     const mock = new MockAdapter(axios);
     const str = 'hello world';
