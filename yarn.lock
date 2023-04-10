@@ -15,10 +15,10 @@
   resolved "https://registry.yarnpkg.com/@atomic-layout/core/-/core-0.14.1.tgz#3d69be5f79775f11b8008f18bc603b04a2141ccd"
   integrity sha512-o5nhk/1djuKzB20C2LSOuetTDytsbGg4c0UfxXkq1pqoaN3hKJcHPYF9nV+p6+P5CWqNBaaJddZ32OsFSppULQ==
 
-"@avaya/neo-react@^0.8.5":
-  version "0.8.5"
-  resolved "https://registry.yarnpkg.com/@avaya/neo-react/-/neo-react-0.8.5.tgz#65a7dc2724994171bdc911e3ccc3e64b80785880"
-  integrity sha512-3j7Y9dV6d05EYdYQLirWFJ/vxSu38Rs2lEiSsELZqNCGsd6PfCzuWhyXs8+AE911qqkh5LHkRrKQ1yXeATJccA==
+"@avaya/neo-react@^0.8.6":
+  version "0.8.6"
+  resolved "https://registry.yarnpkg.com/@avaya/neo-react/-/neo-react-0.8.6.tgz#5a68e6210ece6ccb6079d1b8266f7b376aacd54f"
+  integrity sha512-8Bpzsga7mJFrD+PPV4mhs0ObkJ85REVwBY4WSdnZ9Tt5e1+S/vRRRQUcgej0ljR9WnsWMwre7Q0jW5a9XAmFuA==
   dependencies:
     atomic-layout "0.16.2"
     loglevel "1.8.1"

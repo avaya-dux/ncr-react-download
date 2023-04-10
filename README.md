@@ -33,6 +33,7 @@
 - https://file-examples.com/index.php/sample-audio-files/sample-wav-download/
 
 ## Chrome cors extension setting:
+
 ![Chrome cors extension options](cors.extension.options.jpg)
 
 ## Change log
@@ -41,7 +42,7 @@
 
 - Replaced fetch with axios
 - Axios gets are cached correctly by axios-request-intercepter
-- Chrome cors extension must be on for ALL downloads including images; 
+- Chrome cors extension must be on for ALL downloads including images;
 - Previously, fetching image must have the extension off. Now it is on for all.
 - To test for failure cases, toggle the extension off
 
@@ -50,3 +51,6 @@
 - mock axios in unit tests
 - set node engine version to >=16.0.0
 
+### 4/10/2023
+
+- bump avaya neo-react version to 0.8.6
