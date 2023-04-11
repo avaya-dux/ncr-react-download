@@ -3,7 +3,7 @@ import {
   downloadAndZipWithCallback,
   downloadOne,
 } from 'src/api/download-zip';
-
+import { getMessage, type ErrorType } from './helper';
 import '@avaya/neo-react/avaya-neo-react.css';
 
 import {
@@ -41,7 +41,7 @@ export function App() {
   const [errors, setErrors] = useState<string[]>([]);
 
   const showSimpleError = useCallback(
-    (error: Error) => {
+    (error: ErrorType) => {
       let popupRef: { id: PopupId; position: PopupPosition } | undefined =
         undefined;
 
@@ -51,7 +51,7 @@ export function App() {
           remove(id, position);
         }
       };
-      const message = error.toString() || 'download failed';
+      const message = getMessage(error);
       const notification = (
         <Notification
           type="event"
@@ -61,7 +61,7 @@ export function App() {
           action={{ onClick }}
         />
       );
-      logger.log({ error: error.toString() });
+      logger.log({ error: getMessage(error) });
       popupRef = notify({ node: notification, position: 'bottom' });
     },
     [notify, remove]
@@ -130,7 +130,9 @@ export function App() {
     const onError = (error: string) => {
       setErrors((errors: string[]) => [error, ...errors]);
     };
-    downloadAndZipWithCallback(urls, onSuccess, onError);
+    downloadAndZipWithCallback(urls, onSuccess, onError).catch((error) => {
+      logger.error({ error });
+    });
   };
 
   return (
