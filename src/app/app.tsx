@@ -11,6 +11,12 @@ import { useCallback, useEffect, useState } from 'react';
 import { removePopupManagerContainer, usePopup } from '@avaya/neo-react';
 import styles from './app.module.scss';
 
+import log from 'loglevel';
+const logger = log.getLogger('app-logger');
+logger.disableAll();
+export { logger as appLogger };
+
+
 const total = 100;
 const playbackWav = 'https://freewavesamples.com/files/Bass-Drum-1.wav';
 
@@ -50,7 +56,7 @@ export function App() {
           action={{ onClick }}
         />
       );
-      console.log({ error: error.toString() });
+      logger.log({ error: error.toString() });
       popupRef = notify({ node: notification, position: 'bottom' });
     },
     [notify, remove]
@@ -83,7 +89,7 @@ export function App() {
         action={{ onClick }}
       />
     );
-    console.log({ message });
+    logger.log({ message });
     popupRef = notify({ node: notification, position: 'bottom' });
 
     return () => {
@@ -104,7 +110,7 @@ export function App() {
 
   const onSuccess = useCallback(
     (status: string) => {
-      console.log({ status });
+      logger.log({ status });
       setCounter((counter) => counter + 1);
     },
     [setCounter]
