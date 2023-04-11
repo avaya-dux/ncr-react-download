@@ -1,11 +1,5 @@
 import { beforeEach, describe, expect, vitest, vi } from 'vitest';
-import {
-  render,
-  screen,
-  waitFor,
-  within,
-  waitForElementToBeRemoved,
-} from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { App, appLogger, total } from './app';
