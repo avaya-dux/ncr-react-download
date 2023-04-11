@@ -8,6 +8,8 @@ const logger = log.getLogger('download-zip-logger');
 logger.disableAll();
 export { logger as downaloadZipLogger };
 
+export const batchSize = 5;
+
 const download = (url: URL) => {
   logger.log('downloading ...');
   return axios
@@ -19,7 +21,7 @@ const download = (url: URL) => {
 
 const downloadByGroup = (
   urls: URL[],
-  files_per_group = 5,
+  files_per_group = batchSize,
   onSuccess?: (status: string) => void,
   onError?: (error: string) => void
 ) => {
@@ -75,7 +77,9 @@ export const downloadOne = (url: URL) => {
 };
 
 export const downloadAndZip = (urls: URL[]) => {
-  return downloadByGroup(urls, 5).then((value) => exportZip(value, urls));
+  return downloadByGroup(urls, batchSize).then((value) =>
+    exportZip(value, urls)
+  );
 };
 
 export const downloadAndZipWithCallback = (
@@ -83,7 +87,7 @@ export const downloadAndZipWithCallback = (
   onSuccess: (status: string) => void,
   onError: (message: string) => void
 ) => {
-  return downloadByGroup(urls, 5, onSuccess, onError).then((value) =>
+  return downloadByGroup(urls, batchSize, onSuccess, onError).then((value) =>
     exportZip(value, urls)
   );
 };

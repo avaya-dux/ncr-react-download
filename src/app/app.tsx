@@ -3,15 +3,26 @@ import {
   downloadAndZipWithCallback,
   downloadOne,
 } from 'src/api/download-zip';
-
+import { getMessage, type ErrorType } from './helper';
 import '@avaya/neo-react/avaya-neo-react.css';
 
-import { Button, Notification, PopupId, PopupPosition } from '@avaya/neo-react';
+import {
+  Button,
+  Notification,
+  PopupId,
+  PopupPosition,
+  removePopupManagerContainer,
+  usePopup,
+} from '@avaya/neo-react';
 import { useCallback, useEffect, useState } from 'react';
-import { removePopupManagerContainer, usePopup } from '@avaya/neo-react';
 import styles from './app.module.scss';
 
-const total = 100;
+import log from 'loglevel';
+const logger = log.getLogger('app-logger');
+logger.disableAll();
+export { logger as appLogger };
+
+export const total = 100;
 const playbackWav = 'https://freewavesamples.com/files/Bass-Drum-1.wav';
 
 const guitarWav =
@@ -30,7 +41,7 @@ export function App() {
   const [errors, setErrors] = useState<string[]>([]);
 
   const showSimpleError = useCallback(
-    (error: Error) => {
+    (error: ErrorType) => {
       let popupRef: { id: PopupId; position: PopupPosition } | undefined =
         undefined;
 
@@ -40,7 +51,7 @@ export function App() {
           remove(id, position);
         }
       };
-      const message = error.toString() || 'download failed';
+      const message = getMessage(error);
       const notification = (
         <Notification
           type="event"
@@ -50,7 +61,7 @@ export function App() {
           action={{ onClick }}
         />
       );
-      console.log({ error: error.toString() });
+      logger.log({ error: getMessage(error) });
       popupRef = notify({ node: notification, position: 'bottom' });
     },
     [notify, remove]
@@ -83,7 +94,7 @@ export function App() {
         action={{ onClick }}
       />
     );
-    console.log({ message });
+    logger.log({ message });
     popupRef = notify({ node: notification, position: 'bottom' });
 
     return () => {
@@ -104,7 +115,7 @@ export function App() {
 
   const onSuccess = useCallback(
     (status: string) => {
-      console.log({ status });
+      logger.log({ status });
       setCounter((counter) => counter + 1);
     },
     [setCounter]
@@ -119,7 +130,9 @@ export function App() {
     const onError = (error: string) => {
       setErrors((errors: string[]) => [error, ...errors]);
     };
-    downloadAndZipWithCallback(urls, onSuccess, onError);
+    downloadAndZipWithCallback(urls, onSuccess, onError).catch((error) => {
+      logger.error({ error });
+    });
   };
 
   return (
