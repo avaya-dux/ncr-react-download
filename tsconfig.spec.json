@@ -14,8 +14,7 @@
     "src/**/*.spec.js",
     "src/**/*.test.jsx",
     "src/**/*.spec.jsx",
-    "src/**/*.d.ts",
-    "src/api/download-zip.testdisabled.ts"
+    "src/**/*.d.ts"
   ],
   "files": [
     "./node_modules/@nrwl/react/typings/cssmodule.d.ts",
