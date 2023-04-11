@@ -11,7 +11,6 @@
     "test:coverage": "nx test --coverage",
     "github": "yarn && yarn build && yarn test && yarn e2e",
     "all": "yarn && yarn format && yarn build && yarn test && yarn e2e"
-
   },
   "engines": {
     "node": ">=16.0.0"
@@ -24,6 +23,7 @@
     "bluebird": "^3.7.2",
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1",
+    "loglevel": "^1.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
@@ -47,7 +47,6 @@
     "@vitejs/plugin-react": "^3.0.0",
     "@vitest/coverage-c8": "~0.25.8",
     "@vitest/ui": "^0.25.8",
-    "axios-mock-adapter": "^1.21.4",
     "cypress": "^12.2.0",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
