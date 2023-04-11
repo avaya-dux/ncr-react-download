@@ -3,7 +3,13 @@ import JsZip from 'jszip';
 import FileSaver from 'file-saver';
 import { axios } from '../cached-axios';
 
+import log from 'loglevel';
+const logger = log.getLogger('download-zip-logger');
+logger.disableAll();
+export { logger as downaloadZipLogger };
+
 const download = (url: URL) => {
+  logger.log('downloading ...');
   return axios
     .get(url.href, {
       responseType: 'blob',
@@ -20,17 +26,18 @@ const downloadByGroup = (
   return BlueBirdPromise.map(
     urls,
     async (url, index, arrayLength) => {
-      if (onSuccess) {
-        onSuccess(`downloading ${url}, ${index} in ${arrayLength}`);
-      }
       return await download(url)
         .then((resp) => {
+          logger.log({ resp });
+          if (onSuccess) {
+            onSuccess(`downloading ${url}, ${index} in ${arrayLength}`);
+          }
           return resp;
         })
         .catch((error) => {
           if (onError) {
             onError(getFilename(url, index));
-            console.error(`failed ${url}, ${index} in ${arrayLength}`);
+            logger.error(`failed ${url}, ${index} in ${arrayLength}`);
           }
           return BlueBirdPromise.reject(error);
         });
