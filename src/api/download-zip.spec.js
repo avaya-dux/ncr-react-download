@@ -23,6 +23,7 @@ const mockSuccess = () => {
 
   global.URL.createObjectURL = vi.fn(() => 'details');
 };
+
 describe('test success cases:', () => {
   beforeEach(() => {
     mockSuccess();

@@ -6,9 +6,15 @@ import {
 
 import '@avaya/neo-react/avaya-neo-react.css';
 
-import { Button, Notification, PopupId, PopupPosition } from '@avaya/neo-react';
+import {
+  Button,
+  Notification,
+  PopupId,
+  PopupPosition,
+  removePopupManagerContainer,
+  usePopup,
+} from '@avaya/neo-react';
 import { useCallback, useEffect, useState } from 'react';
-import { removePopupManagerContainer, usePopup } from '@avaya/neo-react';
 import styles from './app.module.scss';
 
 import log from 'loglevel';
@@ -16,8 +22,7 @@ const logger = log.getLogger('app-logger');
 logger.disableAll();
 export { logger as appLogger };
 
-
-const total = 100;
+export const total = 100;
 const playbackWav = 'https://freewavesamples.com/files/Bass-Drum-1.wav';
 
 const guitarWav =
