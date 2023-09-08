@@ -2,7 +2,7 @@ import {
   downloadAndZip,
   downloadAndZipWithCallback,
   downloadOne,
-} from 'src/api/download-zip';
+} from '../api/download-zip';
 import { getMessage, type ErrorType } from './helper';
 import '@avaya/neo-react/avaya-neo-react.css';
 
@@ -58,7 +58,7 @@ export function App() {
           icon="error"
           header="Event"
           description={message}
-          action={{ onClick }}
+          actions={{ closable: { onClick } }}
         />
       );
       logger.log({ error: getMessage(error) });
@@ -91,7 +91,7 @@ export function App() {
         icon="error"
         header="Event"
         description={message}
-        action={{ onClick }}
+        actions={{ closable: { onClick } }}
       />
     );
     logger.log({ message });

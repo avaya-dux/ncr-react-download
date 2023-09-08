@@ -73,3 +73,26 @@ All files         |     100 |      100 |     100 |     100 |
   helper.ts       |     100 |      100 |     100 |     100 |
 ------------------|---------|----------|---------|---------|-------------------
 ```
+
+### 9/8/2023 major update:
+
+- updated nx link, cmds
+- fixed cypress error when using bundler module resolution
+- changed moduleResolution to bundler since typescript 5 can no longer find avaya neo-react module
+- disabled nx-cloud
+- updated avaya neo-react to 1.0.1 and updated notification usage
+- delete node_modules to fix an error when running cypress e2e test
+- https://nx.dev/core-features/automate-updating-dependencies
+- https://nx.dev/nx-cloud/reference/config#disabling-connections-to-nx-cloud
+- [cypress does not like bundler moduleResolution](https://github.com/cypress-io/cypress/issues/26308)
+- [Typescript moduleresolution bundler](https://devblogs.microsoft.com/typescript/announcing-typescript-5-0/#moduleresolution-bundler)
+- [vs code module bundler error](https://stackoverflow.com/questions/76071355/vite-default-template-giving-error-in-vscode-moduleresolution-bundler)
+- nx migration commands:
+
+```
+   yarn nx migrate latest
+   yarn  
+   yarn nx migrate --run-migrations
+   mv migrations.json migration.json.bkp
+```
+

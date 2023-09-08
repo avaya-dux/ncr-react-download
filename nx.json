@@ -3,7 +3,7 @@
   "npmScope": "react-download",
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/nx-cloud",
+      "runner": "nx-cloud",
       "options": {
         "cacheableOperations": ["build", "lint", "test", "e2e"],
         "accessToken": "MmM2ODkxZWMtOWYyOC00OGI1LTgzNmYtMjdlY2I2OTVkYjg0fHJlYWQtd3JpdGU="
@@ -40,7 +40,7 @@
     "sharedGlobals": []
   },
   "generators": {
-    "@nrwl/react": {
+    "@nx/react": {
       "application": {
         "style": "scss",
         "linter": "eslint",
@@ -56,5 +56,6 @@
       }
     }
   },
-  "defaultProject": "react-download"
+  "defaultProject": "react-download",
+  "neverConnectToCloud": true
 }
