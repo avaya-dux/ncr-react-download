@@ -148,7 +148,7 @@ export function App() {
           Toggle on Chrome CORS extension before running this
         </p>
         <Button name="download1" onClick={download1}>
-          Download 1 wav
+          Download one wav
         </Button>
       </div>
 
